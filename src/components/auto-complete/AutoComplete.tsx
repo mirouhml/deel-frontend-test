@@ -107,6 +107,7 @@ const AutoComplete = ({ data }: IAutoComplete) => {
           type='text'
           onChange={(event) => onChange(event)}
           value={inputValue}
+          placeholder='Country name'
         />
         <ul ref={dataList}>
           {isVisible &&

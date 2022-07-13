@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import AutoComplete from './components/AutoComplete';
+import AutoComplete from './components/auto-complete/AutoComplete';
 import API from './utils/apiUtils';
 import './App.css';
 
