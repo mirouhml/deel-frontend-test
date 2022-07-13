@@ -82,43 +82,45 @@ const AutoComplete = ({ data }: IAutoComplete) => {
     }
   };
   return (
-    <div className='suggestions'>
-      <input
-        type='text'
-        onChange={(event) => onChange(event)}
-        ref={textInput}
-      />
-      <ul ref={dataList}>
-        {isVisible &&
-          autoCompleteSuggestions.map(
-            (suggestion: any, index: number) => {
-              return (
-                <li
-                  key={index}
-                  className={
-                    index === selectedCountryIndex
-                      ? 'country country-selected'
-                      : 'country'
-                  }
-                  onClick={(event: React.MouseEvent<HTMLElement>) =>
-                    onClick(event)
-                  }
-                  ref={
-                    index === selectedCountryIndex
-                      ? selectedCountry
-                      : undefined
-                  }
-                >
-                  <HighLighter
-                    text={suggestion}
-                    highlight={inputValue}
-                  />
-                </li>
-              );
-            }
-          )}
-        {!isVisible && <li className='no-match'>No match</li>}
-      </ul>
+    <div className='autocomplete'>
+      <div className='suggestions'>
+        <input
+          type='text'
+          onChange={(event) => onChange(event)}
+          ref={textInput}
+        />
+        <ul ref={dataList}>
+          {isVisible &&
+            autoCompleteSuggestions.map(
+              (suggestion: any, index: number) => {
+                return (
+                  <li
+                    key={index}
+                    className={
+                      index === selectedCountryIndex
+                        ? 'country country-selected'
+                        : 'country'
+                    }
+                    onClick={(event: React.MouseEvent<HTMLElement>) =>
+                      onClick(event)
+                    }
+                    ref={
+                      index === selectedCountryIndex
+                        ? selectedCountry
+                        : undefined
+                    }
+                  >
+                    <HighLighter
+                      text={suggestion}
+                      highlight={inputValue}
+                    />
+                  </li>
+                );
+              }
+            )}
+          {!isVisible && <li className='no-match'>No match</li>}
+        </ul>
+      </div>
     </div>
   );
 };
