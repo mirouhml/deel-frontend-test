@@ -58,8 +58,14 @@
   font-weight: bold;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .suggestions {
     width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .suggestions {
+    min-width: 600px;
   }
 }

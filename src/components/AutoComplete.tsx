@@ -164,7 +164,11 @@ const Highlighter = ({ country, inputValue }: any) => {
     <span>
       {highlightedText.map((text, index) => {
         if (index === 1) {
-          return <span className='highlight'>{text}</span>;
+          return (
+            <span key={index} className='highlight'>
+              {text}
+            </span>
+          );
         }
         return text;
       })}
