@@ -47,12 +47,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Functionality and future plans
 
-To use the website, you just need to type in the search field, and the autocomplete will show you the matching results.
+- To search for a country, you just need to type in the search field, and the autocomplete will show you the matching results.
 
-You can click on the result to select it, and the input field's value will be replaced by that.
+- You can click on the result to select it, and the input field's value will be replaced by that.
 
-You can also use the up and down arrow keys to select the result with the enter key.
+- You can also use the up and down arrow keys to select the result with the enter key.
 
-The autocomplete will also show you the highlighted part of the text.
+- The autocomplete will also show you the highlighted part of the text.
 
-The navigation with the keyboard still needs some work, so it's not 100% perfect yet, but it works well enough in my opinion.
+The navigation with the keyboard still needs some work, so it's not 100% perfect yet, but it works well enough for now.
