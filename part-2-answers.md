@@ -33,17 +33,19 @@ Honestly I have no idea about a situation of when it might break the app but I t
 
 ## 6. Give 3 examples of the HOC pattern.
 
-One famous example is that if we have 2 components that aren't identical but use pretty much the same logic, we can make a function that has the ability to create components, the function will accept as one of its arguments a child component (a wrapped component) and the other arguments we'll use them to pass the unique methods of each component.
+1. One example is that if we have 2 components that aren't identical but use pretty much the same logic, we can make a function that has the ability to create components, the function will accept as one of its arguments a child component (a wrapped component) and the other arguments we'll use them to pass the unique methods of each component, and then it will return a new component that will be the same as the child component but with the unique methods.
 
-Another example is the React.memo component, it's a function that accepts a component and returns a memoized version of that component, this means it uses the higher order component pattern.
+2. Another example is the React.memo component, it's a function that accepts a component and returns a memoized version of that component, this means it uses the higher order component pattern.
 
 ## 7. what's the difference in handling exceptions in promises, callbacks and async...await.
 
-The difference is, promises handle the exceptions on their own, kind of, and we can check the exceptions that got caught by using `.catch()`, but in `async...await` we need to use try and catch to handle the exceptions, as for callbacks, I am not sure it's possible to catch the exceptions, I read one time that it's possible if we override the default behaviour of `window.onerror` but honestly I never tried and I don't think it's a good option.
+- Promises handle the exceptions on their own, kind of, and we can check the exceptions that got caught by using `.catch()`.
+- In `async...await` we need to use `try and catch` to handle the exceptions.
+- As for `callbacks`, I am not sure it's possible to catch the exceptions using, I read one time that it's possible if we override the default behaviour of `window.onerror` but honestly I never tried and I don't think it's a good option.
 
 ## 8. How many arguments does setState take and why is it async.
 
-`setState` has 2 arguments, the first is the `updater` that we use to update the state, and the second one is `callback function`, which will be called when setState has finished updating the state, it is async because this needs to happen in the background or it will cause the application to be blocked while the state is being set.
+`setState()` has 2 arguments, the first is the `updater` that we use to update the state, and the second one is `callback function`, which will be called when `setState()` has finished updating the state, it is async because this needs to happen in the background or it will block the application while the state is being set.
 
 ## 9. List the steps needed to migrate a Class to Function Component.
 
@@ -52,7 +54,7 @@ The difference is, promises handle the exceptions on their own, kind of, and we 
 - If we have a state, we need to replace the state declaration with `useState()`.
 - If we used any Lifecycle methods we need to adapt them to the functional component by using `useEffect()`.
 - Remove the usage of `this` and change the declaration of the variables and the functions.
-- Remove `Render()` as we don't need it we'll return directly without it in a functional component.
+- Remove `Render()` as we don't need it we'll use `return` directly without it.
 
 ## 10. List a few ways styles can be used with components.
 
@@ -63,4 +65,12 @@ The difference is, promises handle the exceptions on their own, kind of, and we 
 
 ## 11. How to render an HTML string coming from the server.
 
-We can render an HTML string coming from the server by using `dangerouslySetInnerHTML`.
+- We can render an HTML string coming from the server by using `dangerouslySetInnerHTML`, but it's risky to do so because it's easy to expose the users to a cross-site scripting (XSS) attack.
+
+  Example:
+
+  ```
+  <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+  ```
+
+- We can also use a third party library called `html-react-parser` to parse the HTML string and render it as a React component.
