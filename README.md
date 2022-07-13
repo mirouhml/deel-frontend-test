@@ -4,7 +4,7 @@ This is an implementation of the AutoComplete component for the Deel Frontend Te
 
 ## Project information
 
-This project was developed using React, TypeScript, and CSS, you can check the live version of the project [here]().
+This project was developed using React, TypeScript, and CSS, you can check the live version of the project [here](https://mirouhml-deel-frontend-test.herokuapp.com/).
 
 ## Technical requirements
 
