@@ -16,7 +16,6 @@ const AutoComplete = ({ data }: IAutoComplete) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [selectedCountryIndex, setSelectedCountryIndex] =
     useState<number>(0);
-  const textInput = useRef<HTMLInputElement>(null);
   const dataList = useRef<HTMLUListElement>(null);
   const selectedCountry = useRef<HTMLLIElement>(null);
 
@@ -51,7 +50,6 @@ const AutoComplete = ({ data }: IAutoComplete) => {
     const country = event.currentTarget.innerText;
     setInputValue(country);
     setSelectedCountryIndex(autoCompleteSuggestions.indexOf(country));
-    if (textInput.current) textInput.current.value = country;
   };
 
   // This useEffect is used to add and remove event listeners to the window object when the component is mounted and unmounted.
@@ -76,11 +74,11 @@ const AutoComplete = ({ data }: IAutoComplete) => {
     } else if (e.key === 'ArrowUp') {
       arrowUp();
     } else if (e.key === 'Enter') {
-      enter();
+      setInputValue(autoCompleteSuggestions[selectedCountryIndex]);
     }
   };
 
-  // I broke down the arrow navigation into the following three functions to make it easier to read.
+  // I broke down the arrow navigation into the following two functions to make it easier to read.
 
   const arrowDown = () => {
     if (selectedCountryIndex < autoCompleteSuggestions.length - 1)
@@ -102,20 +100,13 @@ const AutoComplete = ({ data }: IAutoComplete) => {
       }
   };
 
-  const enter = () => {
-    if (textInput.current)
-      textInput.current.value =
-        autoCompleteSuggestions[selectedCountryIndex];
-    setInputValue(autoCompleteSuggestions[selectedCountryIndex]);
-  };
-
   return (
     <div className='autocomplete'>
       <div className='suggestions'>
         <input
           type='text'
           onChange={(event) => onChange(event)}
-          ref={textInput}
+          value={inputValue}
         />
         <ul ref={dataList}>
           {isVisible &&
@@ -128,6 +119,11 @@ const AutoComplete = ({ data }: IAutoComplete) => {
                       index === selectedCountryIndex
                         ? 'country country-selected'
                         : 'country'
+                    }
+                    ref={
+                      index === selectedCountryIndex
+                        ? selectedCountry
+                        : undefined
                     }
                     onClick={(event: React.MouseEvent<HTMLElement>) =>
                       onClick(event)
