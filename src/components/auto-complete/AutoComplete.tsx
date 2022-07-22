@@ -21,7 +21,7 @@ const AutoComplete = ({ data }: IAutoComplete) => {
 
   // I used useMemo to avoid unnecessary re-renders when the inputValue changes.
   const autoCompleteSuggestions = useMemo(() => {
-    const filtered = data.filter((country: any) => {
+    const filtered = data.filter((country: string) => {
       return (
         country.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
       );
@@ -147,7 +147,7 @@ const AutoComplete = ({ data }: IAutoComplete) => {
 
 // This is a subcomponent of AutoComplete that highlights the matching part of the country name in the suggestion list.
 
-const Highlighter = ({ country, inputValue }: any) => {
+const Highlighter = ({ country, inputValue }: { country: string, inputValue: string}) => {
   const matchingText = inputValue.toLowerCase();
   const matchingTextStartIndex = country
     .toLowerCase()
